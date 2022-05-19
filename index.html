@@ -11,10 +11,12 @@
 </head>
 
 <body>
-  <h1>여긴 메인 페이지</h1>
-  <h2 id="username"></h2>
+  <h1>여기는 메인 페이지</h1>
+  <h2>현재 아이디 : <span id="username"></span></h2>
   <button type="button" onclick="location.href='/article_create.html'">
-    게시글 작성</button>
+    게시글 작성
+  </button>
+  <button type="button" id="loginout" onclick="logout()">로그아웃</button>
 
   <ol id="articles"></ol>
 </body>
