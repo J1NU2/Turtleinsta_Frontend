@@ -53,20 +53,22 @@ async function handleLogin() {
 
 
 async function getName() {
-    // console.log("get Name")
-    // console.log(localStorage.getItem("token"))
-
     const response = await fetch(`${backend_base_url}/getuserinfo`, {
         headers: {
             'Authorization': localStorage.getItem("token")
         }
     })
-    response_json = await response.json()
-    console.log(response_json)
+    // response_json = await response.json()
+    // const username = document.getElementById("username")
+    // username.innerText = response_json.email
 
-    const username = document.getElementById("username")
-    username.innerText = response_json.email
-
+    if (response.status == 200) {
+        response_json = await response.json()
+        console.log(response_json)
+        return response_json.email
+    } else {
+        return null
+    }
 }
 
 
