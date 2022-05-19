@@ -1,2 +1,18 @@
-console.log("제발 실행되게 해주세요..")
+async function loadArticles() {
+    console.log("Page Load Success")
+    articles = await getArticles()
+    console.log(articles)
+
+    const article_list = document.getElementById("articles")
+
+    articles.forEach(article => {
+        console.log(article)
+        const newArticle = document.createElement("li");
+        newArticle.setAttribute("id", article._id)
+        newArticle.innerText = article.title
+        article_list.appendChild(newArticle)
+    });
+}
+
+loadArticles();
 getName();
