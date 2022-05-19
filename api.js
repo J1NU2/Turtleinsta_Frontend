@@ -116,3 +116,13 @@ function articleDetail(article_id) {
     const url = `${frontend_base_url}/article_detail.html?id=${article_id}`
     location.href = url
 }
+
+async function getArticleDetail(article_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}`, {
+        method: 'GET'
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    return response_json.article
+}
