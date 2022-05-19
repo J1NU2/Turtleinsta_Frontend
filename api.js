@@ -53,8 +53,8 @@ async function handleLogin() {
 
 
 async function getName() {
-    console.log("get Name")
-    console.log(localStorage.getItem("token"))
+    // console.log("get Name")
+    // console.log(localStorage.getItem("token"))
 
     const response = await fetch(`${backend_base_url}/getuserinfo`, {
         headers: {
@@ -67,4 +67,38 @@ async function getName() {
     const username = document.getElementById("username")
     username.innerText = response_json.email
 
+}
+
+
+async function postArticle(title, content) {
+    const articleData = {
+        title: title,
+        content: content
+    }
+    console.log(articleData)
+
+    const response = await fetch(`${backend_base_url}/article`, {
+        method: 'POST',
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        },
+        body: JSON.stringify(articleData)
+    })
+    response_json = await response.json()
+    console.log(response_json)
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/`);
+    } else {
+        alert(response.status)
+    }
+}
+
+async function getArticles() {
+    const response = await fetch(`${backend_base_url}/article`, {
+        method: 'GET',
+    })
+    response_json = await response.json()
+
+    return response_json.articles
 }
