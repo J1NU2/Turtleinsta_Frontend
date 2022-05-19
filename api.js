@@ -104,3 +104,9 @@ async function getArticles() {
 
     return response_json.articles
 }
+
+// 백엔드와 송신하지 않기 때문에 async가 필요 없다.
+function logout() {
+    localStorage.removeItem("token")
+    window.location.replace(`${frontend_base_url}/`);
+}
