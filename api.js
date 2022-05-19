@@ -110,3 +110,9 @@ function logout() {
     localStorage.removeItem("token")
     window.location.replace(`${frontend_base_url}/`);
 }
+
+function articleDetail(article_id) {
+    console.log(article_id)
+    const url = `${frontend_base_url}/article_detail.html?id=${article_id}`
+    location.href = url
+}
