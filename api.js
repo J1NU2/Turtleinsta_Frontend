@@ -148,3 +148,18 @@ async function patchArticle(article_id, title, content) {
         alert(response.status)
     }
 }
+
+async function deleteArticle() {
+    const response = await fetch(`${backend_base_url}/article/${article_id}`, {
+        method: "DELETE",
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    })
+
+    if (response.status == 200) {
+        window.location.replace(`${frontend_base_url}/`)
+    } else {
+        alert(response.status)
+    }
+}
