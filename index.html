@@ -10,6 +10,15 @@
   <script src="index.js"></script>
 </head>
 
+<style>
+  .articles li {
+    margin-bottom: 10px;
+    width: 150px;
+    background-color: #CED4DA;
+    cursor: pointer;
+  }
+</style>
+
 <body>
   <h1>여기는 메인 페이지</h1>
   <h2>현재 아이디 : <span id="username"></span></h2>
@@ -18,7 +27,7 @@
   </button>
   <button type="button" id="loginout" onclick="logout()">로그아웃</button>
 
-  <ol id="articles"></ol>
+  <ol id="articles" class="articles"></ol>
 </body>
 
 </html>
