@@ -60,6 +60,10 @@ async function updateArticle() {
     loadArticle(article_id)
 }
 
+async function removeArticle() {
+    await deleteArticle(article_id)
+}
+
 
 loadArticle(article_id)
 // getArticleDetail(article_id);
