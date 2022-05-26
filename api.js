@@ -58,14 +58,11 @@ async function getName() {
             'Authorization': localStorage.getItem("token")
         }
     })
-    // response_json = await response.json()
-    // const username = document.getElementById("username")
-    // username.innerText = response_json.email
 
     if (response.status == 200) {
         response_json = await response.json()
         console.log(response_json)
-        return response_json.email
+        return response_json
     } else {
         return null
     }
