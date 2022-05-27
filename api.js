@@ -160,3 +160,23 @@ async function deleteArticle() {
         alert(response.status)
     }
 }
+
+async function postComment(article_id, comment_content) {
+    const commentData = {
+        "content": comment_content
+    }
+
+    const response = await fetch(`${backend_base_url}/article/${article_id}/comment`, {
+        method: "POST",
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        },
+        body: JSON.stringify(commentData)
+    })
+
+    if (response.status == 200) {
+        return response
+    } else {
+        alert(response.status)
+    }
+}
