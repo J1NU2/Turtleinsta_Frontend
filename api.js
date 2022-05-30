@@ -196,3 +196,19 @@ async function postLike(article_id) {
         alert(response.status)
     }
 }
+
+async function deleteLike(article_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/like`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.status)
+    }
+}
