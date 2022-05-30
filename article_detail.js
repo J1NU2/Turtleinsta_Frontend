@@ -91,12 +91,13 @@ async function writeComment() {
     comment_content.value = ""
 }
 
-function likeArticle() {
+async function likeArticle() {
     const like_button = document.getElementById("like_button")
     like_button.classList.toggle("fa-thumbs-down")
 
     if (!liked) {
-        console.log("좋아요")
+        const response = await postLike(article_id)
+        console.log(response)
         liked = true
     } else {
         console.log("좋아요 취소")
