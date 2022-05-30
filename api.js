@@ -212,3 +212,19 @@ async function deleteLike(article_id) {
         alert(response.status)
     }
 }
+
+async function getLike(article_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/like`, {
+        method: 'GET',
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.status)
+    }
+}
