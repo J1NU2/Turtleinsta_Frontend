@@ -1,6 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const article_id = urlParams.get('id')
 console.log(article_id)
+let liked = false
 
 
 async function loadArticle(article_id) {
@@ -90,6 +91,18 @@ async function writeComment() {
     comment_content.value = ""
 }
 
+function likeArticle() {
+    const like_button = document.getElementById("like_button")
+    like_button.classList.toggle("fa-thumbs-down")
+
+    if (!liked) {
+        console.log("좋아요")
+        liked = true
+    } else {
+        console.log("좋아요 취소")
+        liked = false
+    }
+}
 
 loadArticle(article_id)
 // getArticleDetail(article_id);
