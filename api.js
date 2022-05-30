@@ -180,3 +180,19 @@ async function postComment(article_id, comment_content) {
         alert(response.status)
     }
 }
+
+async function postLike(article_id) {
+    const response = await fetch(`${backend_base_url}/article/${article_id}/like`, {
+        method: 'POST',
+        headers: {
+            'Authorization': localStorage.getItem("token")
+        }
+    })
+
+    if (response.status == 200) {
+        response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.status)
+    }
+}
