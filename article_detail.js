@@ -27,6 +27,8 @@ async function loadArticle(article_id) {
         comment_section.appendChild(new_comment)
     }
 
+    updateLike()
+
     const user = await getName()
 
     if (user.id != article.user) {
@@ -98,13 +100,26 @@ async function likeArticle() {
     if (!liked) {
         const response = await postLike(article_id)
         console.log(response, "좋아요")
+        like_button.innerText = parseInt(like_button.innerText) + 1
         liked = true
     } else {
         const response = await deleteLike(article_id)
         console.log(response, "좋아요 취소")
+        like_button.innerText = parseInt(like_button.innerText) - 1
         liked = false
     }
 }
+
+async function updateLike() {
+    const response = await getLike(article_id)
+    console.log(response)
+    liked = response.liked
+
+    if (liked) {
+        like_button.classList.toggle("fa-thumbs-down")
+    }
+}
+
 
 loadArticle(article_id)
 // getArticleDetail(article_id);
